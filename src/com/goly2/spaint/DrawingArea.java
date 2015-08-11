@@ -67,7 +67,6 @@ public class DrawingArea extends JPanel {
 	private CursorLoader cursorLoader;
 	
 	// Filters
-	private FiltersManager filtersManager;
 	private Magic currentMagic;
 	
 	// BucketFiller
@@ -262,7 +261,6 @@ public class DrawingArea extends JPanel {
 		cursorLoader.setCursor(this, CursorLoader.MAGIC_CURSOR);
 		cursorLoader.setCursorInitiated(true);
 		currentMagic = magic;
-		filtersManager = mng;
 	}
 	
 	public void selectBucketFill() {

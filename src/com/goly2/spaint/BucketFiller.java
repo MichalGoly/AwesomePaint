@@ -1,6 +1,7 @@
 package com.goly2.spaint;
 
 import java.awt.Point;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
@@ -32,8 +33,15 @@ public class BucketFiller {
 		int initialColor = img.getRGB(x, y);
 		examList.add(new Point(x, y));
 		
+		Rectangle2D imgBounds = new Rectangle2D.Double(0, 0, img.getWidth(), img.getHeight());
+		
 		while (examList.size() > 0) {
 			Point p = examList.remove(0);
+			
+			// make sure point is within the image
+			if (!imgBounds.contains(p)) {
+				continue;
+			}
 			
 			try {
 				if (img.getRGB(p.x, p.y) == initialColor) {
@@ -48,7 +56,8 @@ public class BucketFiller {
 	
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
-				return;
+				e.printStackTrace();
+				continue;
 			}
 		}
 		

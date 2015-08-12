@@ -66,6 +66,7 @@ public class Paint extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);	
